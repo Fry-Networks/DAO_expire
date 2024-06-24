@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export interface Vote extends mongoose.Document {
-    end_date: string;
+    end_date: Date;
     total_votes: number;
     hadVotes: boolean;
     createdAt: string;
