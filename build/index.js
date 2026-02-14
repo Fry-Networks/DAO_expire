@@ -13,13 +13,13 @@ import 'dotenv/config';
 setInterval(() => __awaiter(void 0, void 0, void 0, function* () {
     yield connect();
     const votes = yield VoteModel.find({ current: true });
-    console.log(votes);
     for (const vote of votes) {
         console.log(`Checking vote ${vote.title} with end date ${vote.end_date}`);
         if (new Date(vote.end_date) < new Date()) {
             vote.current = false;
+            vote.end_date = new Date(vote.end_date);
             vote.save();
             console.log(`Vote ${vote.title} has ended`);
         }
     }
-}), 10000);
+}), 60000);

@@ -4,7 +4,6 @@ import 'dotenv/config'
 setInterval(async () => {
     await connect();
     const votes = await VoteModel.find({current: true});
-    console.log(votes);
     for (const vote of votes) {
         console.log(`Checking vote ${vote.title} with end date ${vote.end_date}`);
         if (new Date(vote.end_date) < new Date()) {

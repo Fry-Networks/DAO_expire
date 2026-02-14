@@ -16,10 +16,7 @@ export async function connect() {
         console.log('Connected to MongoDB!');
     });
 
-    connection = await mongoose.connect(uri);
-
-    mongoose.connection.useDb('main');
-
+    connection = await mongoose.connect(uri, { dbName: 'main' });
 
 
     mongoose.connection.on('error', (err) => {

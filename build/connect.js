@@ -24,8 +24,7 @@ export function connect() {
         mongoose.connection.on('connected', () => {
             console.log('Connected to MongoDB!');
         });
-        connection = yield mongoose.connect(uri);
-        mongoose.connection.useDb('main');
+        connection = yield mongoose.connect(uri, { dbName: 'main' });
         mongoose.connection.on('error', (err) => {
             console.error(`Mongoose connection error:\n${err.stack}`);
         });
