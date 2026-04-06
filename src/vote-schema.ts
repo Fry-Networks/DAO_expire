@@ -5,10 +5,13 @@ export interface Vote extends mongoose.Document {
     total_votes: number;
     hadVotes: boolean;
     createdAt: string;
+    editedAt: Date;
     deleted: boolean;
-    current: boolean
+    current: boolean;
     title: string;
     description: string;
+    type: string;
+    status: string;
     votes: [
         {
             option: string;
@@ -18,17 +21,20 @@ export interface Vote extends mongoose.Document {
             different_people: string[];
         }
     ]
-    }
+}
 
 export const voteSchema = new mongoose.Schema({
     end_date: Date,
     total_votes: { type: Number, default: 0},
     hadVotes: { type: Boolean, default: false },
     createdAt: { type: String, default: Date.now },
+    editedAt: Date,
     deleted: { type: Boolean, default: false },
     current: { type: Boolean, default: false },
     title: String,
     description: String,
+    type: String,
+    status: String,
     votes: [
         {
             option: String,
@@ -40,4 +46,3 @@ export const voteSchema = new mongoose.Schema({
     ]
 });
 export const VoteModel = mongoose.model<Vote>('Vote', voteSchema, 'dao');
-

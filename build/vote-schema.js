@@ -4,10 +4,13 @@ export const voteSchema = new mongoose.Schema({
     total_votes: { type: Number, default: 0 },
     hadVotes: { type: Boolean, default: false },
     createdAt: { type: String, default: Date.now },
+    editedAt: Date,
     deleted: { type: Boolean, default: false },
     current: { type: Boolean, default: false },
     title: String,
     description: String,
+    type: String,
+    status: String,
     votes: [
         {
             option: String,
