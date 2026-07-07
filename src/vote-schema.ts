@@ -12,15 +12,14 @@ export interface Vote extends mongoose.Document {
     description: string;
     type: string;
     status: string;
-    votes: [
-        {
-            option: string;
-            description: string;
-            title: string;
-            votes: number;
-            different_people: string[];
-        }
-    ]
+    contractVoteId: string;
+    votes: {
+        option: string;
+        description: string;
+        title: string;
+        votes: number;
+        different_people: string[];
+    }[];
 }
 
 export const voteSchema = new mongoose.Schema({
@@ -35,6 +34,7 @@ export const voteSchema = new mongoose.Schema({
     description: String,
     type: String,
     status: String,
+    contractVoteId: String,
     votes: [
         {
             option: String,

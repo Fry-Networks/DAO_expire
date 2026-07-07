@@ -11,6 +11,7 @@ export const voteSchema = new mongoose.Schema({
     description: String,
     type: String,
     status: String,
+    contractVoteId: String,
     votes: [
         {
             option: String,
